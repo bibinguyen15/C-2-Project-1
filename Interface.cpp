@@ -35,26 +35,27 @@ void displayMenu()
 
 void processSelection(DonorList& DList)
 {
-    char choice;
+    int choice;
+    char cont;
     do
     {
         displayMenu();
         cin >> choice;
         cout << endl;
         
-        if (choice == '1' ) addDonor(DList);
-        else if (choice == '2') deleteDonor(DList);
-        else if (choice == '3') printAllDonors(DList);
+        if (choice == 1) addDonor(DList);
+        else if (choice == 2) deleteDonor(DList);
+        else if (choice == 3) printAllDonors(DList);
+        else if (choice == 4) break;
         else cout << "\n  => Sorry. That is not a selection." << endl;
         
         cout << "\n  => Would you like to continue? (y/n) ";
-        cin >> choice;
+        cin >> cont;
         cout << endl;
     }
-    while (choice == 'y');
+    while (cont == 'y');
     
     cout << "\n  => Thank you for visiting our site!" << endl;
-    
 }
 
 void addDonor(DonorList& DList)
@@ -79,11 +80,19 @@ void addDonor(DonorList& DList)
 
 void deleteDonor(DonorList& Dlist)
 {
-    int memberNumber = 0;
-    cout << "  => Enter donor's membership number: ";
-    cin >> memberNumber;
-    cout << endl;
-    Dlist.deleteDonor(memberNumber);
+    if(Dlist.isEmpty())
+    {
+        cerr << "The database has no donors." << endl;
+    }
+    else
+    {
+        int memberNumber = 0;
+        cout << "  => Enter donor's membership number: ";
+        cin >> memberNumber;
+        cout << endl;
+        Dlist.deleteDonor(memberNumber);
+        cout << "  => Donor has been deleted." << endl;
+    }
 }
 
 void printAllDonors(const DonorList& Dlist)
