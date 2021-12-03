@@ -53,49 +53,46 @@ DonorList::DonorList()
 	: first(nullptr), last(nullptr), count(0) {}
 
 void DonorList::addDonor(const string& newFirst, const string& newLast, 
-    int newNo, double newDonationAmt)
+	int newNo, double newDonationAmt)
 {
-    DonorType newDonor(newFirst, newLast, newNo, newDonationAmt);
-    if (count == 0)
-    {
-        first = new Node(newDonor, nullptr);
-        last = first;
-    }
-    else
-    {
-        //input into first node
-        if(first->getData().getMembershipNo() > newNo)
-        {
-            first = new Node(newDonor, first);
-        }
-        else
-        {
-            Node* trailCurrent = first;
-            Node* current = first->getPtrToNext();
-            bool found = false;
-            //move current forward
-            while (current != nullptr && !found)
-            {
-                if (current->getData().getMembershipNo() > newNo)
-                {
-                    trailCurrent->setPtrToNext(new Node(newDonor, current));
-                    found = true;
-                }
-                else
-                {
-                    trailCurrent = current;
-                    current = current->getPtrToNext();
-                }
-            }
-            //input into the end
-            if (!found)
-            {
-                last->setPtrToNext(new Node(newDonor, nullptr));
-                last = last->getPtrToNext();
-            }
-        }
-    }
-    count++;
+	DonorType newDonor(newFirst, newLast, newNo, newDonationAmt);
+	if (count == 0)
+	{
+		first = new Node(newDonor, nullptr);
+		last = first;
+	}
+	else
+	{
+	    if(first->getData().getMembershipNo() > newNo)
+	    {
+	        first = new Node(newDonor, first);
+	    }
+	    else
+	    {
+	        Node* trailCurrent = first;
+	        Node* current = first->getPtrToNext();
+	        bool found = false;
+	        while (current != nullptr && !found)
+	        {
+	            if(current->getData().getMembershipNo() > newNo)
+	            {
+	                trailCurrent->setPtrToNext(new Node(newDonor, current));
+	                found = true;
+	            }
+	            else
+        	    {
+        	        trailCurrent = current;
+            		current = current->getPtrToNext();
+        	    }
+	        }
+    	    if(!found)
+    	    {
+        	    last->setPtrToNext(new Node(newDonor, nullptr));
+            	last = last->getPtrToNext();
+    	    }
+	    }
+	}
+	count++;
 }
 
 void DonorList::createList()
@@ -186,7 +183,6 @@ void DonorList::deleteDonor(int memberNo)
 				current = nullptr;
 				--count;
 				found = true;
-				cout << "  => Donor has been deleted.";
 			}
 			else
 			{
@@ -197,10 +193,9 @@ void DonorList::deleteDonor(int memberNo)
 
 		if (!found)
 		{
-			cout << "Donor is not in the list.  => Donor has been deleted.";
+			cout << "Donor is not in the list.";
 		}
-	}
-	cout << endl;
+	}	
 }
 
 void DonorList::printAllDonors() const
