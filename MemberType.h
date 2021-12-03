@@ -49,4 +49,3 @@ private:
 	int memberNo;
 };
 #endif
-
