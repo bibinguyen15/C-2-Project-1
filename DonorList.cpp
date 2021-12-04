@@ -206,7 +206,7 @@ void DonorList::deleteDonor(int memberNo)
 
 		if (!found)
 		{
-			cout << "Donor is not in the list.  => Donor has been deleted.";
+			cout << "Donor is not in the list.";
 		}
 	}	
 }
