@@ -58,6 +58,12 @@ public:
 	// default constructor
 	DonorList();
 
+	// copy constructor
+	DonorList(const DonorList& otherList);
+
+	// copy assignment operator
+	DonorList& operator=(const DonorList& otherList);
+
 	// Function addDonor adds new node to end of list
 	void addDonor(const std::string& newFirst,
 		const std::string& newLast,
@@ -94,6 +100,18 @@ public:
 	~DonorList();
 
 private:
+	// Copies param obj to calling obj if latter is empty
+	DonorList& copyCallingObjIsEmpty(const DonorList& otherList);
+	
+	// Copies param obj to calling obj if both have same length
+	DonorList& copyObjectsSameLength(const DonorList& otherList);
+	
+	// Copies param obj to calling obj if latter is longer
+	DonorList& copyCallingObjLonger(const DonorList& otherList);
+	
+	// Copies param obj to calling obj if latter is shorter
+	DonorList& copyCallingObjShorter(const DonorList& otherList);
+
 	Node *first;
 	Node *last;
 	int count;
