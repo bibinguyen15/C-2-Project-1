@@ -91,7 +91,6 @@ void deleteDonor(DonorList& Dlist)
         cin >> memberNumber;
         cout << endl;
         Dlist.deleteDonor(memberNumber);
-        cout << "  => Donor has been deleted." << endl;
     }
 }
 
