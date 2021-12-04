@@ -52,7 +52,7 @@ Node::~Node() {}
 DonorList::DonorList()
 	: first(nullptr), last(nullptr), count(0) {}
 
-void DonorList::addDonor(const string& newFirst, const string& newLast, 
+void DonorList::addDonor(const string& newFirst, const string& newLast,
 	int newNo, double newDonationAmt)
 {
 	DonorType newDonor(newFirst, newLast, newNo, newDonationAmt);
@@ -63,8 +63,34 @@ void DonorList::addDonor(const string& newFirst, const string& newLast,
 	}
 	else
 	{
-		last->setPtrToNext(new Node(newDonor, nullptr));
-		last = last->getPtrToNext();
+		if (first->getData().getMembershipNo() > newNo)
+		{
+			first = new Node(newDonor, first);
+		}
+		else
+		{
+			Node* trailCurrent = first;
+			Node* current = first->getPtrToNext();
+			bool found = false;
+			while (current != nullptr && !found)
+			{
+				if (current->getData().getMembershipNo() > newNo)
+				{
+					trailCurrent->setPtrToNext(new Node(newDonor, current));
+					found = true;
+				}
+				else
+				{
+					trailCurrent = current;
+					current = current->getPtrToNext();
+				}
+			}
+			if (!found)
+			{
+				last->setPtrToNext(new Node(newDonor, nullptr));
+				last = last->getPtrToNext();
+			}
+		}
 	}
 	count++;
 }
