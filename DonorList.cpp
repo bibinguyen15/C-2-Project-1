@@ -132,9 +132,6 @@ bool DonorList::searchID(int memberNo) const
 
 void DonorList::deleteDonor(int memberNo)
 {
-	cout << "First:" << first->getData().getMembershipNo() << endl;
-	cout << "Last:" << last->getData().getMembershipNo() << endl;
-
 	//Check if it is first element
 	if (first->getData().getMembershipNo() == memberNo)
 	{
@@ -143,6 +140,7 @@ void DonorList::deleteDonor(int memberNo)
 		delete current;
 		current = nullptr;
 		--count;
+		cout << "  => Donor has been deleted.";
 	}
 	//More than 1 element
 	else
@@ -163,6 +161,7 @@ void DonorList::deleteDonor(int memberNo)
 				delete current;
 				current = nullptr;
 				--count;
+				cout << "  => Donor has been deleted.";
 				found = true;
 			}
 			else
@@ -174,11 +173,9 @@ void DonorList::deleteDonor(int memberNo)
 
 		if (!found)
 		{
-			cout << "Donor is not in the list.";
+			cout << "Donor is not in the list.  => Donor has been deleted.";
 		}
 	}	
-	cout << "First:" << first->getData().getMembershipNo() << endl;
-	cout << "Last:" << last->getData().getMembershipNo() << endl;
 }
 
 void DonorList::printAllDonors() const
