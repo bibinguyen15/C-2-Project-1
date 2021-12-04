@@ -101,29 +101,31 @@ DonorList& DonorList::copyObjectsSameLength(const DonorList& otherList)
 
 DonorList& DonorList::copyCallingObjLonger(const DonorList& otherList)
 {
-	Node* current = first->getPtrToNext();
-	Node* trailCurrent = first;
+	Node* current = first;
 	Node* other = otherList.first;
-	int otherCount = otherList.getNoOfDonors();
 
-	for (int i = 0; i < otherCount; ++i)
+
+	for (int i = 0; i < otherList.count; ++i)
 	{
-		trailCurrent->setData(other->getData());
+		if (i == otherList.count - 1)
+		{
+			last = current;
+		}
+		current->setData(other->getData());
 
-		trailCurrent = trailCurrent->getPtrToNext();
+		//trailCurrent = trailCurrent->getPtrToNext();
 		current = current->getPtrToNext();
 		other = other->getPtrToNext();
 	}
-	last = trailCurrent;
 
-	while (current->getPtrToNext() != nullptr)
+	Node* temp = current;
+	for (int i = 0; i <= (count - otherList.count); ++i)
 	{
-		trailCurrent = current;
 		current = current->getPtrToNext();
-		delete trailCurrent;
+		deleteDonor(temp->getData().getMembershipNo());
+		temp = current;
 	}
 	
-	count = otherList.count;
 	return *this;
 }
 
