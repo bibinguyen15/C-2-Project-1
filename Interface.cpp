@@ -35,11 +35,12 @@ void displayMenu()
 
 void processSelection(DonorList& DList)
 {
-    int choice;
-    char cont;
-    do
+    char cont = 'y';
+    while (cont == 'y')
     {
         displayMenu();
+        
+        int choice = 0;
         cin >> choice;
         cout << endl;
         
@@ -47,13 +48,12 @@ void processSelection(DonorList& DList)
         else if (choice == 2) deleteDonor(DList);
         else if (choice == 3) printAllDonors(DList);
         else if (choice == 4) break;
-        else cout << "\n  => Sorry. That is not a selection." << endl;
+        else cout << "  => Sorry. That is not a selection." << endl;
         
         cout << "\n  => Would you like to continue? (y/n) ";
         cin >> cont;
         cout << endl;
     }
-    while (cont == 'y');
     
     cout << "\n  => Thank you for visiting our site!" << endl;
 }
