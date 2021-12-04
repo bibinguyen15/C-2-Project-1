@@ -27,8 +27,8 @@ Node::Node(DonorType newData, Node* newPtrToNext)
 	: data(newData), ptrToNext(newPtrToNext) {}
 
 Node* Node::getPtrToNext() const
-{ 
-	return ptrToNext; 
+{
+	return ptrToNext;
 }
 
 DonorType& Node::getData()
@@ -41,9 +41,9 @@ void Node::setPtrToNext(Node* newPtrToNext)
 	ptrToNext = newPtrToNext;
 }
 
-void Node::setData(DonorType newData) 
-{ 
-	data = newData; 
+void Node::setData(DonorType newData)
+{
+	data = newData;
 }
 
 Node::~Node() {}
@@ -52,7 +52,7 @@ Node::~Node() {}
 DonorList::DonorList()
 	: first(nullptr), last(nullptr), count(0) {}
 
-void DonorList::addDonor(const string& newFirst, const string& newLast, 
+void DonorList::addDonor(const string& newFirst, const string& newLast,
 	int newNo, double newDonationAmt)
 {
 	DonorType newDonor(newFirst, newLast, newNo, newDonationAmt);
@@ -63,8 +63,34 @@ void DonorList::addDonor(const string& newFirst, const string& newLast,
 	}
 	else
 	{
-		last->setPtrToNext(new Node(newDonor, nullptr));
-		last = last->getPtrToNext();
+		if (first->getData().getMembershipNo() > newNo)
+		{
+			first = new Node(newDonor, first);
+		}
+		else
+		{
+			Node* trailCurrent = first;
+			Node* current = first->getPtrToNext();
+			bool found = false;
+			while (current != nullptr && !found)
+			{
+				if (current->getData().getMembershipNo() > newNo)
+				{
+					trailCurrent->setPtrToNext(new Node(newDonor, current));
+					found = true;
+				}
+				else
+				{
+					trailCurrent = current;
+					current = current->getPtrToNext();
+				}
+			}
+			if (!found)
+			{
+				last->setPtrToNext(new Node(newDonor, nullptr));
+				last = last->getPtrToNext();
+			}
+		}
 	}
 	count++;
 }
@@ -157,7 +183,6 @@ void DonorList::deleteDonor(int memberNo)
 				current = nullptr;
 				--count;
 				found = true;
-				cout << "  => Donor has been deleted.";
 			}
 			else
 			{
@@ -168,10 +193,9 @@ void DonorList::deleteDonor(int memberNo)
 
 		if (!found)
 		{
-			cout << "Donor is not in the list.  => Donor has been deleted.";
+			cout << "Donor is not in the list.";
 		}
 	}
-	cout << endl;
 }
 
 void DonorList::printAllDonors() const
