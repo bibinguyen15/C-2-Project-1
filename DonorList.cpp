@@ -172,8 +172,8 @@ void DonorList::deleteDonor(int memberNo)
 			first = first->getPtrToNext();
 			delete current;
 			current = nullptr;
-			--count;
 		}
+		--count;
 	}
 	//More than 1 element
 	else
