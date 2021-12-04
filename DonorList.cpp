@@ -63,34 +63,8 @@ void DonorList::addDonor(const string& newFirst, const string& newLast,
 	}
 	else
 	{
-	    if(first->getData().getMembershipNo() > newNo)
-	    {
-	        first = new Node(newDonor, first);
-	    }
-	    else
-	    {
-	        Node* trailCurrent = first;
-	        Node* current = first->getPtrToNext();
-	        bool found = false;
-	        while (current != nullptr && !found)
-	        {
-	            if(current->getData().getMembershipNo() > newNo)
-	            {
-	                trailCurrent->setPtrToNext(new Node(newDonor, current));
-	                found = true;
-	            }
-	            else
-        	    {
-        	        trailCurrent = current;
-            		current = current->getPtrToNext();
-        	    }
-	        }
-    	    if(!found)
-    	    {
-        	    last->setPtrToNext(new Node(newDonor, nullptr));
-            	last = last->getPtrToNext();
-    	    }
-	    }
+		last->setPtrToNext(new Node(newDonor, nullptr));
+		last = last->getPtrToNext();
 	}
 	count++;
 }
@@ -158,6 +132,9 @@ bool DonorList::searchID(int memberNo) const
 
 void DonorList::deleteDonor(int memberNo)
 {
+	cout << "First:" << first->getData().getMembershipNo() << endl;
+	cout << "Last:" << last->getData().getMembershipNo() << endl;
+
 	//Check if it is first element
 	if (first->getData().getMembershipNo() == memberNo)
 	{
@@ -178,6 +155,10 @@ void DonorList::deleteDonor(int memberNo)
 		{
 			if (current->getData().getMembershipNo() == memberNo)
 			{
+				if (current == last)
+				{
+					last = trailCurrent;
+				}
 				trailCurrent->setPtrToNext(current->getPtrToNext());
 				delete current;
 				current = nullptr;
@@ -196,6 +177,8 @@ void DonorList::deleteDonor(int memberNo)
 			cout << "Donor is not in the list.";
 		}
 	}	
+	cout << "First:" << first->getData().getMembershipNo() << endl;
+	cout << "Last:" << last->getData().getMembershipNo() << endl;
 }
 
 void DonorList::printAllDonors() const
