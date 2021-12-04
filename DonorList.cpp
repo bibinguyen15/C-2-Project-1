@@ -135,12 +135,19 @@ void DonorList::deleteDonor(int memberNo)
 	//Check if it is first element
 	if (first->getData().getMembershipNo() == memberNo)
 	{
-		Node* current = first;
-		first = first->getPtrToNext();
-		delete current;
-		current = nullptr;
-		--count;
-		cout << "  => Donor has been deleted.";
+		if (first == last)
+		{
+			delete first;
+			first = last = nullptr;
+		}
+		else
+		{
+			Node* current = first;
+			first = first->getPtrToNext();
+			delete current;
+			current = nullptr;
+			--count;
+		}
 	}
 	//More than 1 element
 	else
