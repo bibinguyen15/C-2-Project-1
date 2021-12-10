@@ -63,7 +63,7 @@ DonorList& DonorList::operator=(const DonorList& otherList)
 	return *this;
 }
 
-DonorList& DonorList::copyCallingObjIsEmpty(const DonorList& otherList)
+void DonorList::copyCallingObjIsEmpty(const DonorList& otherList)
 {
 	Node* current = otherList.first;
 
@@ -76,11 +76,9 @@ DonorList& DonorList::copyCallingObjIsEmpty(const DonorList& otherList)
 
 		current = current->getPtrToNext();
 	}
-
-	return *this;
 }
 
-DonorList& DonorList::copyObjectsSameLength(const DonorList& otherList)
+void DonorList::copyObjectsSameLength(const DonorList& otherList)
 {
 	if (count == otherList.count)
 	{
@@ -95,34 +93,35 @@ DonorList& DonorList::copyObjectsSameLength(const DonorList& otherList)
 			other = other->getPtrToNext();
 		}
 	}
-
-	return *this;
 }
 
-DonorList& DonorList::copyCallingObjLonger(const DonorList& otherList)
+void DonorList::copyCallingObjLonger(const DonorList& otherList)
 {
 	Node* current = first;
 	Node* other = otherList.first;
 
-	for (int i = 0; i < count; ++i)
+	for (int i = 0; i < otherList.count; ++i)
 	{
-		if (i < otherList.count)
+		if (i == otherList.count - 1)
 		{
-			current->setData(other->getData());
+			last = current;
+		}
+		current->setData(other->getData());
 
-			current = current->getPtrToNext();
-			other = other->getPtrToNext();
-		}
-		else
-		{
-			
-		}
+		current = current->getPtrToNext();
+		other = other->getPtrToNext();
 	}
-	
-	return *this;
+
+	Node* temp = current;
+	for (int i = 0; i <= (count - otherList.count); ++i)
+	{
+		current = current->getPtrToNext();
+		deleteDonor(temp->getData().getMembershipNo());
+		temp = current;
+	}
 }
 
-DonorList& DonorList::copyCallingObjShorter(const DonorList& otherList)
+void DonorList::copyCallingObjShorter(const DonorList& otherList)
 {
 	
 	Node* current = first;
@@ -147,6 +146,4 @@ DonorList& DonorList::copyCallingObjShorter(const DonorList& otherList)
 			other = other->getPtrToNext();
 		}
 	}
-	
-	return *this;
 }
