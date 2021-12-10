@@ -47,12 +47,16 @@ void processSelection(DonorList& DList)
         if (choice == 1) addDonor(DList);
         else if (choice == 2) deleteDonor(DList);
         else if (choice == 3) printAllDonors(DList);
-        else if (choice == 4) break;
+        else if (choice == 4) cont = 'n';
         else cout << "  => Sorry. That is not a selection." << endl;
         
-        cout << "\n  => Would you like to continue? (y/n) ";
-        cin >> cont;
-        cout << endl;
+        if (cont == 'y')
+        {
+            cout << "\n  => Would you like to continue? (y/n) ";
+            cin >> cont;
+            cout << endl;
+        }
+        
     }
     
     cout << "\n  => Thank you for visiting our site!" << endl;
