@@ -1,26 +1,25 @@
 /*
-*	Connorpog!
-*
-*	Hoang, Connor
-*	Dang, Jeffrey
-*	Ly, Jenny
-*	Nguyen, Catherine
-*	Quach, Bryan
-*
-*	December 1, 2021
-*
-*	CS A250
-*	Project 1
+	Connorpog!
+
+	Hoang, Connor
+	Dang, Jeffrey
+	Ly, Jenny
+	Nguyen, Catherine
+	Quach, Bryan
+
+	December 1, 2021
+
+	CS A250
+	Project 1
 */
 
 #include "MemberType.h"
 
 #include <iostream>
-
 using namespace std;
 
 MemberType::MemberType() 
-	: firstName(""), lastName(""), memberNo(0) {}
+	: firstName("N/A"), lastName("N/A"), memberNo(0) {}
 
 MemberType::MemberType(const std::string& newFirst,
 						const std::string& newLast, int newNo)

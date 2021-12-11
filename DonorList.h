@@ -1,16 +1,16 @@
 /*
-*	Connorpog!
-*
-*	Hoang, Connor
-*	Dang, Jeffrey
-*	Ly, Jenny
-*	Nguyen, Catherine
-*	Quach, Bryan
-*
-*	December 1, 2021
-*
-*	CS A250
-*	Project 1
+	Connorpog!
+
+	Hoang, Connor
+	Dang, Jeffrey
+	Ly, Jenny
+	Nguyen, Catherine
+	Quach, Bryan
+
+	December 1, 2021
+
+	CS A250
+	Project 1
 */
 
 #ifndef DONORLIST_H
@@ -30,7 +30,8 @@ public:
 	// Function getPtrToNext returns the address of the next node.
 	Node* getPtrToNext() const;
 
-	// Function getData returns the DonorType value stored in the node.
+	// Function getData returns the DonorType value 
+	//stored in the node.
 	DonorType& getData();
 
 	// Function setPtrToNext overwrites the address stored in 
@@ -58,12 +59,6 @@ public:
 	// default constructor
 	DonorList();
 
-	// copy constructor
-	DonorList(const DonorList& otherList);
-
-	// copy assignment operator
-	DonorList& operator=(const DonorList& otherList);
-
 	// Function addDonor adds new node to end of list
 	void addDonor(const std::string& newFirst,
 		const std::string& newLast,
@@ -74,14 +69,14 @@ public:
 
 	// Function getNoOfDonors returns number of nodes
 	int getNoOfDonors() const;
-
 	// Function getTotalDonations returns total amount of donations
 	double getTotalDonations() const;
 
-	//Function isEmpty returns true if list is empty, false otherwise
+	//Function isEmpty returns true if list is empty, 
+	//false otherwise
 	bool isEmpty() const;
-
-	// Function searchID returns true if donor is in the list, false otherse
+	// Function searchID returns true if donor is in the 
+	//list, false otherse
 	bool searchID(int memberNo) const;
 
 	// Function deleteDonor deletes a donor from the list
@@ -89,28 +84,33 @@ public:
 
 	// Function printAllDonors prints a list of donors
 	void printAllDonors() const;
-
-	// Function printAllDonations prints all donations with respective donors
+	// Function printAllDonations prints all donations 
+	//with respective donors
 	void printAllDonations() const;
 
-	// Function clearList deletes all nodes and resets member variables
+	// Function clearList deletes all nodes and resets 
+	//member variables
 	void clearList();
-
 	//destructor
 	~DonorList();
 
+	// copy constructor
+	DonorList(const DonorList& otherList);
+	// copy assignment operator
+	DonorList& operator=(const DonorList& otherList);
+
 private:
 	// Copies param obj to calling obj if latter is empty
-	DonorList& copyCallingObjIsEmpty(const DonorList& otherList);
+	void copyCallingObjIsEmpty(const DonorList& otherList);
 	
 	// Copies param obj to calling obj if both have same length
-	DonorList& copyObjectsSameLength(const DonorList& otherList);
+	void copyObjectsSameLength(const DonorList& otherList);
 	
 	// Copies param obj to calling obj if latter is longer
-	DonorList& copyCallingObjLonger(const DonorList& otherList);
+	void copyCallingObjLonger(const DonorList& otherList);
 	
 	// Copies param obj to calling obj if latter is shorter
-	DonorList& copyCallingObjShorter(const DonorList& otherList);
+	void copyCallingObjShorter(const DonorList& otherList);
 
 	Node *first;
 	Node *last;

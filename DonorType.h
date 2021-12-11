@@ -1,16 +1,16 @@
 /*
-*	Connorpog!
-*
-*	Hoang, Connor
-*	Dang, Jeffrey
-*	Ly, Jenny
-*	Nguyen, Catherine
-*	Quach, Bryan
-*
-*	December 1, 2021
-*
-*	CS A250
-*	Project 1
+	Connorpog!
+
+	Hoang, Connor
+	Dang, Jeffrey
+	Ly, Jenny
+	Nguyen, Catherine
+	Quach, Bryan
+
+	December 1, 2021
+
+	CS A250
+	Project 1
 */
 
 #ifndef DONORTYPE_H

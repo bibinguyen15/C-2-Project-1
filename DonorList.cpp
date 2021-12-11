@@ -1,16 +1,16 @@
 /*
-*	Connorpog!
-*
-*	Hoang, Connor
-*	Dang, Jeffrey
-*	Ly, Jenny
-*	Nguyen, Catherine
-*	Quach, Bryan
-*
-*	December 2, 2021
-*
-*	CS A250
-*	Project 1
+	Connorpog!
+
+	Hoang, Connor
+	Dang, Jeffrey
+	Ly, Jenny
+	Nguyen, Catherine
+	Quach, Bryan
+
+	December 2, 2021
+
+	CS A250
+	Project 1
 */
 
 #include "DonorList.h"
@@ -52,8 +52,8 @@ Node::~Node() {}
 DonorList::DonorList()
 	: first(nullptr), last(nullptr), count(0) {}
 
-void DonorList::addDonor(const string& newFirst, const string& newLast,
-	int newNo, double newDonationAmt)
+void DonorList::addDonor(const string& newFirst, 
+	const string& newLast, int newNo, double newDonationAmt)
 {
 	DonorType newDonor(newFirst, newLast, newNo, newDonationAmt);
 	if (count == 0)
@@ -76,7 +76,8 @@ void DonorList::addDonor(const string& newFirst, const string& newLast,
 			{
 				if (current->getData().getMembershipNo() > newNo)
 				{
-					trailCurrent->setPtrToNext(new Node(newDonor, current));
+					trailCurrent->setPtrToNext(new Node(
+						newDonor, current));
 					found = true;
 				}
 				else
@@ -109,7 +110,7 @@ void DonorList::createList()
 		while (it != donorSet.end())
 		{
 			addDonor(it->getFirstName(), it->getLastName(),
-				it->getMembershipNo(), it->getAmountDonated());;
+				it->getMembershipNo(), it->getAmountDonated());
 			it++;
 		}
 	}
@@ -242,6 +243,8 @@ void DonorList::clearList()
 		delete temp;
 		temp = first;
 	}
+
+	last = nullptr;
 
 	count = 0;
 }

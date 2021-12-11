@@ -1,30 +1,29 @@
 /*
-*	Connorpog!
-* 
-*	Hoang, Connor
-*	Dang, Jeffrey
-*	Ly, Jenny
-*	Nguyen, Catherine
-*	Quach, Bryan
-* 
-*	December 2, 2021
-* 
-*	CS A250
-*	Project 1
+	Connorpog!
+ 
+	Hoang, Connor
+	Dang, Jeffrey
+	Ly, Jenny
+	Nguyen, Catherine
+	Quach, Bryan
+ 
+	December 2, 2021
+ 
+	CS A250
+	Project 1
 */
-
-#include <string>
-#include <iostream>
-
 #include "Interface.h"
 
+#include <iostream>
 using namespace std;
 
 void displayMenu()
 {
-    cout << "*************************************************" << endl;
+    cout << "*************************************************"
+        << endl;
     cout << "                    MAIN MENU" << endl;
-    cout << "*************************************************\n" << endl;
+    cout << "*************************************************\n"
+        << endl;
     cout << "Select one of the following: \n" << endl;
     cout << "    1. Add a donor" << endl;
     cout << "    2. Delete a donor" << endl;
@@ -33,22 +32,21 @@ void displayMenu()
     cout << "  => Enter your selection: ";
 }
 
-void processSelection(DonorList& DList)
+void processSelection(DonorList& dList)
 {
     char cont = 'y';
     while (cont == 'y')
     {
-        displayMenu();
-        
         int choice = 0;
         cin >> choice;
         cout << endl;
         
-        if (choice == 1) addDonor(DList);
-        else if (choice == 2) deleteDonor(DList);
-        else if (choice == 3) printAllDonors(DList);
+        if (choice == 1) addDonor(dList);
+        else if (choice == 2) deleteDonor(dList);
+        else if (choice == 3) printAllDonors(dList);
         else if (choice == 4) cont = 'n';
-        else cout << "  => Sorry. That is not a selection." << endl;
+        else cout << "  => Sorry. That is not a selection."
+            << endl;
         
         if (cont == 'y')
         {
@@ -56,13 +54,18 @@ void processSelection(DonorList& DList)
             cin >> cont;
             cout << endl;
         }
+
+        if (cont == 'y') displayMenu();
         
     }
-    
-    cout << "\n  => Thank you for visiting our site!" << endl;
+
+    cout << "  => Thank you for visiting our site!" << endl;
+    cout << "\nPress any key to continue . . ." << endl;
+    getchar(); //Capture the input buffer
+    getchar(); //User input any key to quit
 }
 
-void addDonor(DonorList& DList)
+void addDonor(DonorList& dList)
 {
     string firstName, lastName;
     cout << "  => Enter donor's first name: ";
@@ -78,13 +81,14 @@ void addDonor(DonorList& DList)
     cout << "  => Enter amount donated: $ ";
     cin >> amountDonated;
     
-    DList.addDonor(firstName, lastName, memberNumber, amountDonated);
+    dList.addDonor(firstName, lastName,
+        memberNumber, amountDonated);
     cout << "\n  => Donor has been added.\n";
 }
 
-void deleteDonor(DonorList& Dlist)
+void deleteDonor(DonorList& dList)
 {
-    if(Dlist.isEmpty())
+    if(dList.isEmpty())
     {
         cerr << "The database has no donors." << endl;
     }
@@ -94,11 +98,11 @@ void deleteDonor(DonorList& Dlist)
         cout << "  => Enter donor's membership number: ";
         cin >> memberNumber;
         cout << endl;
-        Dlist.deleteDonor(memberNumber);
+        dList.deleteDonor(memberNumber);
     }
 }
 
-void printAllDonors(const DonorList& Dlist)
+void printAllDonors(const DonorList& dlist)
 {
-    Dlist.printAllDonors();
+    dlist.printAllDonors();
 }
