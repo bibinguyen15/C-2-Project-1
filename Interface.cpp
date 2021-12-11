@@ -76,6 +76,11 @@ void addDonor(DonorList& dList)
     int memberNumber = 0;
     cout << "  => Enter donor's membership number: ";
     cin >> memberNumber;
+    if (!cin) //Checks if input was an int or not
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
     
     double amountDonated = 0.0;
     cout << "  => Enter amount donated: $ ";
@@ -98,6 +103,11 @@ void deleteDonor(DonorList& dList)
         cout << "  => Enter donor's membership number: ";
         cin >> memberNumber;
         cout << endl;
+        if (!cin) //Checks if input was an int or not
+        {
+            cin.clear(); 
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
         dList.deleteDonor(memberNumber);
     }
 }
