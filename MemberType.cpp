@@ -22,7 +22,7 @@ MemberType::MemberType()
 	: firstName("N/A"), lastName("N/A"), memberNo(0) {}
 
 MemberType::MemberType(const std::string& newFirst,
-						const std::string& newLast, int newNo)
+			const std::string& newLast, int newNo)
 	: firstName(newFirst), lastName(newLast),
 		memberNo(newNo) {}
 
