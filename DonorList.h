@@ -102,13 +102,10 @@ public:
 private:
 	// Copies param obj to calling obj if latter is empty
 	void copyCallingObjIsEmpty(const DonorList& otherList);
-	
 	// Copies param obj to calling obj if both have same length
 	void copyObjectsSameLength(const DonorList& otherList);
-	
 	// Copies param obj to calling obj if latter is longer
 	void copyCallingObjLonger(const DonorList& otherList);
-	
 	// Copies param obj to calling obj if latter is shorter
 	void copyCallingObjShorter(const DonorList& otherList);
 
