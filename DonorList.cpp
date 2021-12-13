@@ -175,6 +175,7 @@ void DonorList::deleteDonor(int memberNo)
 			current = nullptr;
 		}
 		--count;
+		cout << "  => Donor has been deleted.\n";
 	}
 	//More than 1 element
 	else
@@ -195,7 +196,7 @@ void DonorList::deleteDonor(int memberNo)
 				delete current;
 				current = nullptr;
 				--count;
-				cout << "  => Donor has been deleted.";
+				cout << "  => Donor has been deleted.\n";
 				found = true;
 			}
 			else
@@ -209,7 +210,7 @@ void DonorList::deleteDonor(int memberNo)
 		{
 			cout << "Donor is not in the list.\n";
 		}
-	}	
+	}
 }
 
 void DonorList::printAllDonors() const
