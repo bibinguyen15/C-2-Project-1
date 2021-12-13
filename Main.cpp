@@ -15,8 +15,6 @@
 
 #include "Interface.h"
 
-using namespace std;
-
 int main()
 {
     DonorList dList;
