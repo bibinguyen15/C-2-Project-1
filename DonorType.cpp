@@ -22,16 +22,16 @@ using namespace std;
 DonorType::DonorType() : donationAmt(0) {}
 
 DonorType::DonorType(const std::string& newFirst,
-					const std::string& newLast,
-					int newNum, double newAmt)
+			const std::string& newLast,
+			int newNum, double newAmt)
 	: MemberType(newFirst, newLast, newNum)
 {
 	donationAmt = newAmt;
 }
 
 void DonorType::setDonorInfo(const string& newFirst,
-							const string& newLast, int newNum, 
-							double newDonationAmt)
+				const string& newLast, int newNum, 
+				double newDonationAmt)
 {
 	setMemberInfo(newFirst, newLast, newNum);
 	donationAmt = newDonationAmt;
