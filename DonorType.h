@@ -29,8 +29,8 @@ public:
 
 	//mutator functions
 	void setDonorInfo(const std::string& newFirst,
-					const std::string& newLast,
-					int newNo, double newDonationAmt);
+				const std::string& newLast,
+				int newNo, double newDonationAmt);
 	void setAmountDonated(double newDonationAmt);
 
 	//accessor functions
